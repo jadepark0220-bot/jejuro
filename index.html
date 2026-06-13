@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6월 제주 여행</title>
+
+<style>
+:root {
+  --ocean: #0891b2;
+  --sky: #38bdf8;
+  --sand: #fef3c7;
+  --mint: #ccfbf1;
+  --dark: #0f172a;
+  --white: #ffffff;
+  --gray: #cbd5e1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Malgun Gothic', sans-serif;
+  background: #f0f9ff;
+  color: var(--dark);
+}
+
+.hero {
+  height: 320px;
+  background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+/* 날짜 필터링 탭 스타일 */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.tab-btn {
+  background: white;
+  border: 2px solid #e2e8f0;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #64748b;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+  background: var(--ocean);
+  color: white;
+  border-color: var(--ocean);
+}
+
+.progress {
+  height: 24px;
+  background: #dbeafe;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22d3ee, #0284c7);
+  transition: .3s;
+}
+
+.day {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.day h2 {
+  color: #0369a1;
+  margin-bottom: 15px;
+}
+
+.place {
+  background: #f8fafc;
+  border-left: 6px solid var(--ocean);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 12px;
+  transition: all 0.3s ease;
+}
+
+.place.done {
+  background: #f1f5f9;
+  border-left-color: #94a3b8;
+  opacity: 0.7;
+}
+
+.place.done h3 {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+.place h3 {
+  margin-bottom: 8px;
+}
+
+.place label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.memo {
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--gray);
+  margin-top: 12px;
+  resize: none;
+  font-family: inherit;
+}
+
+.memo:focus {
+  outline: 2px solid var(--sky);
+}
+
+/* 별점 스타일 */
+.rating {
+  font-size: 24px;
+  margin-top: 8px;
+  color: #e2e8f0; /* 기본 빈 별 색상 */
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+}
+
+.rating .star.active {
+  color: #fbbf24; /* 채워진 별 색상 */
+}
+
+.map {
+  background: #e0f2fe;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 2.2;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 30px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div>
+    <h1>🌴 6월 제주 여행</h1>
+    <p>바다 · 수국 · 역사 · 가족</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="card">
+    <div class="badge">여행 진행률</div>
+    <h2 id="progressText">0 / 8 완료</h2>
+    <div class="progress">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="filterDay('all')">전체 보기</button>
+    <button class="tab-btn" onclick="filterDay('day2')">DAY 2</button>
+    <button class="tab-btn" onclick="filterDay('day3')">DAY 3</button>
+    <button class="tab-btn" onclick="filterDay('day4')">DAY 4</button>
+    <button class="tab-btn" onclick="filterDay('day5')">DAY 5</button>
+    <button class="tab-btn" onclick="filterDay('day6')">DAY 6</button>
+  </div>
+
+  <div class="card">
+    <h2>🗺 제주 여행 지도</h2>
+    <div class="map">
+      📍 함덕 & 서우봉 · 종달리 수국길 · 광치기해변 · 휴애리 · 박수기정 · 수월봉 · 한담해안산책로
+    </div>
+  </div>
+
+  <div class="day-section" data-day="day2">
+    <div class="day">
+      <h2>🌊 DAY 2</h2>
+      <div class="place">
+        <h3>제주4·3평화공원</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="0">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="느낀 점 기록"></textarea>
+      </div>
+
+      <div class="place">
+        <h3>함덕 서우봉</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="1">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="함덕 바다 후기"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-section" data-day="day3">
+    <div class="day">
+      <h2>🌺 DAY 3</h2>
+      <div class="place">
+        <h3>종달리 수국길</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="2">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="수국길 후기"></textarea>
+      </div>
+
+      <div class="place">
+        <h3>광치기해변</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="3">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="광치기해변 후기"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-section" data-day="day4">
+    <div class="day">
+      <h2>🌸 DAY 4</h2>
+      <div class="place">
+        <h3>휴애리 수국축제</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="4">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="수국축제 후기"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-section" data-day="day5">
+    <div class="day">
+      <h2>🌅 DAY 5</h2>
+      <div class="place">
+        <h3>박수기정</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="5">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="박수기정 후기"></textarea>
+      </div>
+
+      <div class="place">
+        <h3>수월봉</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="6">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="수월봉 후기"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-section" data-day="day6">
+    <div class="day">
+      <h2>🌊 DAY 6</h2>
+      <div class="place">
+        <h3>한담해안산책로</h3>
+        <label><input type="checkbox" class="visit"> 방문 완료</label>
+        <div class="rating" data-index="7">
+          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        </div>
+        <textarea class="memo" placeholder="한담 후기"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💰 여행 경비</h2>
+    <input id="cost" type="number" placeholder="금액 입력 (원)" style="width:100%; padding:12px; border-radius:12px; border:1px solid #ccc; margin-top:10px;">
+  </div>
+
+</div>
+
+<div class="footer">
+  <h2>🌴 6월 제주 여행</h2>
+  <p>체크 · 메모 자동 저장</p>
+</div>
+
+<script>
+const checks = document.querySelectorAll(".visit");
+const fill = document.getElementById("progressFill");
+const text = document.getElementById("progressText");
+const costInput = document.getElementById("cost");
+
+// 1. 진행률 및 방문 완료 스타일 제어
+function updateProgress(){
+  const total = checks.length;
+  const done = [...checks].filter(c => c.checked).length;
+  const percent = (done / total) * 100;
+
+  fill.style.width = percent + "%";
+  text.innerHTML = done + " / " + total + " 완료";
+
+  checks.forEach(c => {
+    const placeDiv = c.closest('.place');
+    if (c.checked) {
+      placeDiv.classList.add('done');
+    } else {
+      placeDiv.classList.remove('done');
+    }
+  });
+
+  localStorage.setItem("jejuChecks", JSON.stringify([...checks].map(c => c.checked)));
+}
+
+// 2. 날짜별 필터링 기능
+function filterDay(day) {
+  // 탭 버튼 활성화 변경
+  const buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // 섹션 보이기/숨기기
+  const sections = document.querySelectorAll('.day-section');
+  sections.forEach(sec => {
+    if (day === 'all' || sec.getAttribute('data-day') === day) {
+      sec.style.display = 'block';
+    } else {
+      sec.style.display = 'none';
+    }
+  });
+}
+
+// 3. 별점 관리 기능
+const ratings = document.querySelectorAll('.rating');
+
+function setStars(ratingContainer, value) {
+  const stars = ratingContainer.querySelectorAll('.star');
+  stars.forEach(star => {
+    if (parseInt(star.getAttribute('data-value')) <= value) {
+      star.classList.add('active');
+    } else {
+      star.classList.remove('active');
+    }
+  });
+}
+
+ratings.forEach(rating => {
+  const index = rating.getAttribute('data-index');
+  
+  // 로컬스토리지에서 별점 데이터 가져오기
+  const savedRating = localStorage.getItem('rating' + index) || 0;
+  setStars(rating, savedRating);
+
+  // 클릭 이벤트 추가
+  rating.addEventListener('click', (e) => {
+    if(e.target.classList.contains('star')) {
+      const value = e.target.getAttribute('data-value');
+      setStars(rating, value);
+      localStorage.setItem('rating' + index, value);
+    }
+  });
+});
+
+// 4. 초기 데이터 로드 및 이벤트 바인딩
+const savedChecks = JSON.parse(localStorage.getItem("jejuChecks"));
+if(savedChecks){
+  checks.forEach((c, i) => {
+    if(savedChecks[i] !== undefined){
+      c.checked = savedChecks[i];
+    }
+  });
+}
+
+checks.forEach(c => {
+  c.addEventListener("change", updateProgress);
+});
+
+updateProgress();
+
+// 메모 저장
+document.querySelectorAll(".memo").forEach((memo, index) => {
+  memo.value = localStorage.getItem("memo" + index) || "";
+  memo.addEventListener("input", () => {
+    localStorage.setItem("memo" + index, memo.value);
+  });
+});
+
+// 경비 저장
+costInput.value = localStorage.getItem("jejuCost") || "";
+costInput.addEventListener("input", () => {
+  localStorage.setItem("jejuCost", costInput.value);
+});
+</script>
+
+</body>
+</html>
