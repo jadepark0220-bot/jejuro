@@ -1,460 +1,1763 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6월 제주 여행</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 6월 가족여행 최종 가이드</title>
+    <!-- 구글 폰트 적용 (프리미엄 한글 폰트 및 세련된 영문 조합) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- 아이콘 팩 (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --sea-dark: #075985;
+            --sea-medium: #0284c7;
+            --sea-light: #e0f2fe;
+            --sky: #38bdf8;
+            --mint: #0d9488;
+            --sand: #fef3c7;
+            --coral: #f43f5e;
+            --bg: #f0f9ff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --card-border: #bae6fd;
+        }
 
-<style>
-:root {
-  --ocean: #0891b2;
-  --sky: #38bdf8;
-  --sand: #fef3c7;
-  --mint: #ccfbf1;
-  --dark: #0f172a;
-  --white: #ffffff;
-  --gray: #cbd5e1;
-}
+        * {
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
+            color: var(--text-main);
+            font-size: 18px;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
 
-body {
-  font-family: 'Malgun Gothic', sans-serif;
-  background: #f0f9ff;
-  color: var(--dark);
-}
+        /* 바다 감성 헤더 디자인 (파도 디자인 포함) */
+        header {
+            background: linear-gradient(rgba(3, 105, 161, 0.6), rgba(7, 89, 133, 0.85)),
+                        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 60px 20px 80px;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.15);
+        }
 
-.hero {
-  height: 320px;
-  background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
+        header h1 {
+            margin: 0;
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
 
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
+        header p {
+            font-size: 18px;
+            margin: 10px 0 0;
+            opacity: 0.95;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
 
-.hero p {
-  font-size: 20px;
-}
+        /* 헤더 아래 물결 디자인 효과 */
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
 
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px;
-}
+        .wave-container svg {
+            position: relative;
+            display: block;
+            width: calc(130% + 1.3px);
+            height: 40px;
+        }
 
-.card {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,.08);
-}
+        .wave-container .wave-fill {
+            fill: #f0f9ff;
+        }
 
-/* 날짜 필터링 탭 스타일 */
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-}
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px 16px;
+        }
 
-.tab-btn {
-  background: white;
-  border: 2px solid #e2e8f0;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #64748b;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
+        /* 📊 진행률 표시 스타일 */
+        .progress-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: -50px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.1);
+            border: 1.5px solid var(--card-border);
+            position: relative;
+            z-index: 5;
+        }
 
-.tab-btn.active {
-  background: var(--ocean);
-  color: white;
-  border-color: var(--ocean);
-}
+        .progress-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--sea-dark);
+            margin-bottom: 10px;
+        }
 
-.progress {
-  height: 24px;
-  background: #dbeafe;
-  border-radius: 30px;
-  overflow: hidden;
-  margin-top: 10px;
-}
+        .progress-bar-bg {
+            background-color: var(--sea-light);
+            border-radius: 10px;
+            height: 14px;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
 
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #22d3ee, #0284c7);
-  transition: .3s;
-}
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--sky) 0%, var(--sea-medium) 100%);
+            height: 100%;
+            width: 0%;
+            border-radius: 10px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
 
-.day {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
-}
+        .progress-status-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 8px;
+            text-align: right;
+            font-weight: 500;
+        }
 
-.day h2 {
-  color: #0369a1;
-  margin-bottom: 15px;
-}
+        /* 테마 요약 요약박스 */
+        .summary {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.06);
+            border: 1px solid var(--sea-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.place {
-  background: #f8fafc;
-  border-left: 6px solid var(--ocean);
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 12px;
-  transition: all 0.3s ease;
-}
+        .summary h2 {
+            font-size: 18px;
+            margin: 0;
+            color: var(--sea-dark);
+            font-weight: 800;
+        }
 
-.place.done {
-  background: #f1f5f9;
-  border-left-color: #94a3b8;
-  opacity: 0.7;
-}
+        .summary p {
+            margin: 0;
+            font-weight: 700;
+            color: var(--mint);
+        }
 
-.place.done h3 {
-  text-decoration: line-through;
-  color: #64748b;
-}
+        /* 🗺 제주 여행 지도 디자인 */
+        .map-section {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.06);
+            border: 1.5px solid var(--sea-light);
+            text-align: center;
+        }
 
-.place h3 {
-  margin-bottom: 8px;
-}
+        .map-section h2 {
+            font-size: 20px;
+            color: var(--sea-dark);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-.place label {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
+        .jeju-map-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            background: radial-gradient(circle, #f0fdf4 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: inset 0 0 15px rgba(2, 132, 199, 0.1);
+        }
 
-.memo {
-  width: 100%;
-  height: 100px;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid var(--gray);
-  margin-top: 12px;
-  resize: none;
-  font-family: inherit;
-}
+        /* 제주도 SVG 디자인 및 경로 가이드 */
+        .jeju-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-.memo:focus {
-  outline: 2px solid var(--sky);
-}
+        .map-pin {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-/* 별점 스타일 */
-.rating {
-  font-size: 24px;
-  margin-top: 8px;
-  color: #e2e8f0; /* 기본 빈 별 색상 */
-  cursor: pointer;
-  display: inline-block;
-  user-select: none;
-}
+        .map-pin circle {
+            fill: white;
+            stroke-width: 3;
+            transition: all 0.3s ease;
+        }
 
-.rating .star.active {
-  color: #fbbf24; /* 채워진 별 색상 */
-}
+        .map-pin text {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 900;
+            font-size: 10px;
+            text-anchor: middle;
+            fill: #0f172a;
+        }
 
-.map {
-  background: #e0f2fe;
-  padding: 25px;
-  border-radius: 20px;
-  text-align: center;
-  font-size: 18px;
-  line-height: 2.2;
-}
+        /* 일자별 지도 하이라이트 매칭 */
+        .map-pin.day1 circle { stroke: #eab308; } /* 노랑 (목포/케이블카) */
+        .map-pin.day2 circle { stroke: #10b981; } /* 초록 (함덕/서우봉) */
+        .map-pin.day3 circle { stroke: #a855f7; } /* 보라 (성산/비자림) */
+        .map-pin.day4 circle { stroke: #ec4899; } /* 핑크 (휴애리/의귀리) */
+        .map-pin.day5 circle { stroke: #f97316; } /* 주황 (수월봉/안덕) */
+        .map-pin.day6 circle { stroke: #06b6d4; } /* 하늘 (애월/공항) */
 
-.footer {
-  text-align: center;
-  padding: 40px;
-  color: #64748b;
-}
+        .map-pin:hover circle, .map-pin.active circle {
+            r: 12;
+            filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.2));
+        }
+        
+        .map-pin.active text {
+            font-weight: 900;
+            fill: #ffffff !important;
+        }
+        .map-pin.active circle {
+            fill: var(--sea-medium);
+        }
 
-.badge {
-  display: inline-block;
-  padding: 5px 12px;
-  border-radius: 30px;
-  background: #e0f2fe;
-  color: #0369a1;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-</style>
+        /* 탭 버튼 가이드 */
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            position: sticky;
+            top: 0;
+            background: rgba(240, 249, 255, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 12px 0;
+            z-index: 10;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* 스크롤바 숨기기 */
+        .tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            border: 1.5px solid var(--card-border);
+            background: white;
+            padding: 12px 20px;
+            border-radius: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--sea-medium);
+            color: white;
+            border-color: var(--sea-medium);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+        }
+
+        .day {
+            display: none;
+        }
+
+        .day.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 하이라이트 박스 */
+        .highlight {
+            background: #fffbeb;
+            border-left: 6px solid #f59e0b;
+            padding: 16px 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #b45309;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        /* 📋 여행지 카드 디자인 개편 */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.04);
+            border-left: 8px solid var(--sea-medium);
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #f0f9ff;
+            border-left-width: 8px;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+        }
+
+        .card.food { border-left-color: var(--mint); }
+        .card.hotel { border-left-color: #ea580c; }
+        .card.spot { border-left-color: #8b5cf6; }
+        .card.ship { border-left-color: #f59e0b; }
+
+        /* 카드 상단 헤더구조 */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .time-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--sea-light);
+            color: var(--sea-dark);
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .card.food .time-box { background-color: #ccfbf1; color: #0f766e; }
+        .card.hotel .time-box { background-color: #ffedd5; color: #c2410c; }
+        .card.spot .time-box { background-color: #f3e8ff; color: #6b21a8; }
+        .card.ship .time-box { background-color: #fef3c7; color: #b45309; }
+
+        /* ✅ 방문 체크박스 디자인 */
+        .check-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .check-btn {
+            background: #f1f5f9;
+            border: 1.5px solid #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .check-btn.checked {
+            background-color: var(--sea-medium);
+            color: white;
+            border-color: var(--sea-medium);
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 4px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .desc {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.6;
+            background: #f8fafc;
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 10px;
+            border: 1.5px solid #f1f5f9;
+        }
+
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 10px;
+            font-weight: 500;
+        }
+
+        .info-row span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 📝 장소별 메모 입력 디자인 */
+        .memo-container {
+            margin-top: 12px;
+            background: #fdfefd;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .memo-header {
+            background: #f8fafc;
+            padding: 8px 14px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            cursor: pointer;
+        }
+
+        .memo-body {
+            display: none;
+            padding: 10px;
+        }
+
+        .memo-body.open {
+            display: block;
+        }
+
+        .memo-textarea {
+            width: 100%;
+            height: 70px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 14px;
+            resize: none;
+            color: #334155;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .memo-textarea:focus {
+            border-color: var(--sea-medium);
+        }
+
+        .memo-saved-indicator {
+            font-size: 12px;
+            color: var(--mint);
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .memo-saved-indicator.show {
+            opacity: 1;
+        }
+
+        /* 이번 여행 베스트 5 */
+        .best {
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.06);
+            border: 1.5px solid var(--sea-light);
+        }
+
+        .best h2 {
+            font-size: 20px;
+            color: var(--sea-dark);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .best ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .best li {
+            margin: 12px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        /* 하단 정보창 */
+        .footer {
+            background: var(--sea-dark);
+            color: white;
+            padding: 24px;
+            border-radius: 24px;
+            margin-top: 30px;
+            text-align: center;
+            line-height: 1.8;
+            box-shadow: 0 10px 25px rgba(3, 105, 161, 0.2);
+        }
+
+        .footer small {
+            color: var(--sky);
+            font-size: 13px;
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        /* 데이터 초기화 버튼 */
+        .reset-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .reset-btn {
+            background: none;
+            border: 1.5px solid #cbd5e1;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .reset-btn:hover {
+            background: #fee2e2;
+            color: #ef4444;
+            border-color: #fca5a5;
+        }
+
+        /* 반응형 스타일 조정 */
+        @media (max-width: 600px) {
+            header h1 { font-size: 30px; }
+            .card { padding: 16px; }
+            .title { font-size: 18px; }
+            .tab-btn { padding: 10px 14px; font-size: 14px; }
+            .progress-card { padding: 16px; }
+            body { font-size: 16px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<section class="hero">
-  <div>
-    <h1>🌴 6월 제주 여행</h1>
-    <p>바다 · 수국 · 역사 · 가족</p>
-  </div>
-</section>
+<header>
+    <h1><i class="fa-solid fa-umbrella-beach"></i> 6월 가족여행 최종 가이드</h1>
+    <p>성인 3명 · 자가운전 · 바다 중심 여행</p>
+    
+    <!-- 바다 물결 애니메이션 SVG -->
+    <div class="wave-container">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120H0C54.67,117.82,107.15,101.49,158.07,81.18,212.87,59.3,268.42,66.27,321.39,56.44Z" class="wave-fill"></path>
+        </svg>
+    </div>
+</header>
 
 <div class="container">
-
-  <div class="card">
-    <div class="badge">여행 진행률</div>
-    <h2 id="progressText">0 / 8 완료</h2>
-    <div class="progress">
-      <div id="progressFill" class="progress-fill"></div>
+    
+    <!-- 📊 진행률 표시 카드 -->
+    <div class="progress-card">
+        <div class="progress-title">
+            <span>우리 가족의 소중한 제주 여정 👣</span>
+            <span id="progress-percent">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+        <div class="progress-status-text" id="progress-status">설레는 여행이 곧 시작됩니다! ✈️</div>
     </div>
-  </div>
 
-  <div class="tabs">
-    <button class="tab-btn active" onclick="filterDay('all')">전체 보기</button>
-    <button class="tab-btn" onclick="filterDay('day2')">DAY 2</button>
-    <button class="tab-btn" onclick="filterDay('day3')">DAY 3</button>
-    <button class="tab-btn" onclick="filterDay('day4')">DAY 4</button>
-    <button class="tab-btn" onclick="filterDay('day5')">DAY 5</button>
-    <button class="tab-btn" onclick="filterDay('day6')">DAY 6</button>
-  </div>
-
-  <div class="card">
-    <h2>🗺 제주 여행 지도</h2>
-    <div class="map">
-      📍 함덕 & 서우봉 · 종달리 수국길 · 광치기해변 · 휴애리 · 박수기정 · 수월봉 · 한담해안산책로
+    <!-- 📌 여행 테마 요약박스 -->
+    <div class="summary">
+        <h2>📌 여행 테마</h2>
+        <p>🌊 바다 · 📜 역사 · 🌸 수국 · 🚶 힐링 산책</p>
     </div>
-  </div>
 
-  <div class="day-section" data-day="day2">
-    <div class="day">
-      <h2>🌊 DAY 2</h2>
-      <div class="place">
-        <h3>제주4·3평화공원</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="0">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
-        </div>
-        <textarea class="memo" placeholder="느낀 점 기록"></textarea>
-      </div>
+    <!-- 🗺 제주 여행 지도 섹션 -->
+    <div class="map-section">
+        <h2><i class="fa-solid fa-map-location-dot"></i> 제주 여행 경로 지도</h2>
+        <div class="jeju-map-container">
+            <svg viewBox="0 0 500 250" class="jeju-svg">
+                <!-- 바다 배경 및 제주도 육지 실루엣 -->
+                <path d="M 60 120 C 60 90, 120 70, 200 65 C 280 60, 380 65, 440 90 C 470 105, 470 125, 450 145 C 410 175, 330 190, 250 190 C 160 190, 90 170, 60 140 C 50 130, 55 125, 60 120 Z" 
+                      fill="#e0f2fe" stroke="#7dd3fc" stroke-width="3" />
+                
+                <!-- 한라산 중심 표시 -->
+                <polygon points="250,115 240,130 260,130" fill="#a7f3d0" stroke="#059669" stroke-width="1.5" />
+                <text x="250" y="145" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">한라산</text>
+                
+                <!-- 경로 점선 연결 (일정의 이동선) -->
+                <path d="M 120,45 L 180,80 L 300,75 L 430,110 L 350,150 L 140,160 L 160,100" 
+                      fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="4,4" opacity="0.6" />
 
-      <div class="place">
-        <h3>함덕 서우봉</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="1">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+                <!-- 일자별 인터랙티브 핀 -->
+                <!-- DAY1 목포 (목포항을 상단에 별도 표기) -->
+                <g class="map-pin day1" id="pin-day1" onclick="selectDay('day1')">
+                    <circle cx="120" cy="45" r="9" />
+                    <text x="120" y="48">D1</text>
+                    <text x="120" y="32" font-size="8" fill="#475569">목포항</text>
+                </g>
+                <!-- DAY2 제주항/함덕 -->
+                <g class="map-pin day2" id="pin-day2" onclick="selectDay('day2')">
+                    <circle cx="300" cy="75" r="9" />
+                    <text x="300" y="78">D2</text>
+                    <text x="300" y="62" font-size="8" fill="#475569">함덕</text>
+                </g>
+                <!-- DAY3 성산/비자림 -->
+                <g class="map-pin day3" id="pin-day3" onclick="selectDay('day3')">
+                    <circle cx="430" cy="110" r="9" />
+                    <text x="430" y="113">D3</text>
+                    <text x="430" y="127" font-size="8" fill="#475569">성산</text>
+                </g>
+                <!-- DAY4 남원/휴애리 -->
+                <g class="map-pin day4" id="pin-day4" onclick="selectDay('day4')">
+                    <circle cx="350" cy="150" r="9" />
+                    <text x="350" y="153">D4</text>
+                    <text x="350" y="167" font-size="8" fill="#475569">휴애리</text>
+                </g>
+                <!-- DAY5 대평/안덕/수월봉 -->
+                <g class="map-pin day5" id="pin-day5" onclick="selectDay('day5')">
+                    <circle cx="140" cy="160" r="9" />
+                    <text x="140" y="163">D5</text>
+                    <text x="140" y="177" font-size="8" fill="#475569">수월봉</text>
+                </g>
+                <!-- DAY6 애월/공항 -->
+                <g class="map-pin day6" id="pin-day6" onclick="selectDay('day6')">
+                    <circle cx="160" cy="100" r="9" />
+                    <text x="160" y="103">D6</text>
+                    <text x="160" y="87" font-size="8" fill="#475569">애월</text>
+                </g>
+            </svg>
         </div>
-        <textarea class="memo" placeholder="함덕 바다 후기"></textarea>
-      </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px; margin-bottom: 0;">🗺️ 지도의 번호(D1~D6)를 클릭하면 해당 일자의 일정으로 바로 이동합니다.</p>
     </div>
-  </div>
 
-  <div class="day-section" data-day="day3">
-    <div class="day">
-      <h2>🌺 DAY 3</h2>
-      <div class="place">
-        <h3>종달리 수국길</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="2">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
-        </div>
-        <textarea class="memo" placeholder="수국길 후기"></textarea>
-      </div>
-
-      <div class="place">
-        <h3>광치기해변</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="3">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
-        </div>
-        <textarea class="memo" placeholder="광치기해변 후기"></textarea>
-      </div>
+    <!-- 탭 내비게이션 -->
+    <div class="tabs" id="day-tabs">
+        <button class="tab-btn active" onclick="openDay(event,'day1')">🚗 DAY 1<span>목포 출발</span></button>
+        <button class="tab-btn" onclick="openDay(event,'day2')">🚢 DAY 2<span>제주입성·함덕</span></button>
+        <button class="tab-btn" onclick="openDay(event,'day3')">🌸 DAY 3<span>비자림·성산</span></button>
+        <button class="tab-btn" onclick="openDay(event,'day4')">🌺 DAY 4<span>수국축제</span></button>
+        <button class="tab-btn" onclick="openDay(event,'day5')">🌊 DAY 5<span>바다드라이브</span></button>
+        <button class="tab-btn" onclick="openDay(event,'day6')">🛍️ DAY 6<span>한담·귀환</span></button>
     </div>
-  </div>
 
-  <div class="day-section" data-day="day4">
-    <div class="day">
-      <h2>🌸 DAY 4</h2>
-      <div class="place">
-        <h3>휴애리 수국축제</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="4">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+    <!-- ==================== DAY1 ==================== -->
+    <div id="day1" class="day active">
+        <div class="highlight">
+            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+            <span>오늘의 하이라이트: 목포해상케이블카 다도해 일몰 감상 🌅</span>
         </div>
-        <textarea class="memo" placeholder="수국축제 후기"></textarea>
-      </div>
+        
+        <div class="card" id="card-d1-1">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 10:00</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d1-1')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🚗 광주 출발</div>
+            <div class="desc">SM3 차량에 짐을 싣고 목포를 향해 여유롭게 출발합니다. (약 50분 소요)</div>
+            <div class="info-row">
+                <span>💰 고속도로 통행료: 약 2,700원</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d1-1')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d1-1">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d1-1', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card food" id="card-d1-2">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 11:10 ~ 12:40</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d1-2')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 선경준치횟집</div>
+            <div class="desc">'썩어도 준치'라는 속담의 주인공인 준치회무침 전문 노포입니다. 새콤달콤 매콤하게 버무려진 준치회를 고소한 참기름과 함께 밥에 쓱쓱 비벼 먹는 맛이 일품입니다. 함께 제공되는 정갈한 남도식 생선구이와 조림 반찬 또한 부모님 입맛에 아주 훌륭한 조화를 이룹니다.</div>
+            <div class="info-row">
+                <span>💰 예상 식비: 준치회무침 1인 10,000원 ~ 15,000원 선</span>
+                <span>💡 꿀팁: 밥을 비비기 전 참기름 대접에 대기해 주세요!</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d1-2')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d1-2">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d1-2', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d1-3">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 13:00 ~ 15:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d1-3')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🏛 목포 근대화거리</div>
+            <div class="desc">근대역사관 1·2관을 중심으로 일제강점기 역사의 흔적이 남은 이국적인 골목을 산책합니다. 평탄한 도보 코스입니다.</div>
+            <div class="info-row">
+                <span>💰 입장료 합계: 2,000원 (성인 1인 요금만 적용!)</span>
+                <span>👵 경로(65세 이상) 무료, ♿ 장애우 무료 (증빙신분증 필참)</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d1-3')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d1-3">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d1-3', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d1-4">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 17:00 ~ 19:00</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d1-4')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌅 목포해상케이블카 (북항승강장 탑승)</div>
+            <div class="desc">시내 및 식당과 가깝고 주차가 가장 편리한 '북항승강장'에서 탑승합니다. 유달산 정상의 기암괴석을 지나 바다 위를 활공하여 반달 모양의 섬 고하도까지 스릴 넘치게 이동합니다. 해질녘에 탑승하시면 다도해를 온통 오렌지빛으로 물들이는 환상적인 낙조를 케이블카 안에서 가장 편안하게 누릴 수 있습니다.</div>
+            <div class="info-row">
+                <span>📍 탑승처: 북항승강장 (목포시 해양대학로 240)</span>
+                <span>💰 왕복 합계: 68,000원 (성인 2.4만, 경로 2.2만, 장애 2.2만)</span>
+                <span>👵 경로/장애 법정할인 적용 (증빙서류 지참 시 2,000원 할인 적용)</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d1-4')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d1-4">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d1-4', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card food" id="card-d1-5">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 19:15 ~ 20:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d1-5')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 독천식당 (목포 낙지요리 전문점)</div>
+            <div class="desc">목포의 5대 대표 별미인 '낙지'를 제대로 맛볼 수 있는 유명 향토음식점입니다. 시원하고 개운한 '연포탕'이나 소갈비와 낙지가 환상적으로 어우러진 '갈낙탕'은 자극적이지 않고 속을 뜨끈하게 데워주어 부모님 기력 회복 및 늦은 저녁 식사로 아주 훌륭합니다.</div>
+            <div class="info-row">
+                <span>💰 갈낙탕 1인 23,000원 / 연포탕 20,000원 / 낙지비빔밥 14,000원</span>
+                <span>💡 꿀팁: 낙지가 매우 부드러워 치아가 약하신 부모님께서 드시기에도 정말 좋습니다.</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d1-5')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d1-5">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d1-5', this.value)" placeholder="부모님 반응, 메뉴 선택 등을 메모해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card hotel" id="card-d1-6">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 21:00 ~</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d1-6')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🏨 클라우드인호텔</div>
+            <div class="desc">내일 아침 일찍 제주행 여객선에 탑승하기 위해 목포항 인근 숙소에서 편안하게 휴식을 취합니다.</div>
+            <div class="info-row">
+                <span>✅ 숙소 예약 완료</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d1-6')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d1-6">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d1-6', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="day-section" data-day="day5">
-    <div class="day">
-      <h2>🌅 DAY 5</h2>
-      <div class="place">
-        <h3>박수기정</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="5">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+    <!-- ==================== DAY2 ==================== -->
+    <div id="day2" class="day">
+        <div class="highlight">
+            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+            <span>오늘의 하이라이트: 함덕해변 서우봉 석양과 청와대 셰프의 향토 만찬 🌊</span>
         </div>
-        <textarea class="memo" placeholder="박수기정 후기"></textarea>
-      </div>
 
-      <div class="place">
-        <h3>수월봉</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="6">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+        <div class="card ship" id="card-d2-1">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 07:30 ~ 12:45</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d2-1')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🚢 퀸제누비아2 (목포항 ➡️ 제주항)</div>
+            <div class="desc">대형 크루즈선에 SM3 차량을 선적하고 제주도로 향합니다. 넓고 아늑한 선내에서 다도해 풍경을 보며 여유롭게 이동합니다.</div>
+            <div class="info-row">
+                <span>✅ 차량 선적 및 승선권 예약 완료</span>
+                <span>⚠️ 신분증 필수 지참</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d2-1')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d2-1">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d2-1', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
         </div>
-        <textarea class="memo" placeholder="수월봉 후기"></textarea>
-      </div>
+
+        <div class="card food" id="card-d2-2">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 13:20 ~ 14:20</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d2-2')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 희야네식당</div>
+            <div class="desc">제주항 인근에 위치한 도민 찐 맛집입니다. 자작하게 조려낸 투박하고 깊은 맛의 고등어조림과 두루치기 정식을 맛봅니다.</div>
+            <div class="info-row">
+                <span>💰 예상 식비: 약 35,000원</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d2-2')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d2-2">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d2-2', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d2-3">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 14:30 ~ 16:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d2-3')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">📜 제주4·3평화공원</div>
+            <div class="desc">제주 현대사의 아픔을 품고 있는 조용하고 경건한 추모 공원입니다. 기념관 내부를 둘러보며 제주의 진짜 역사와 마주합니다.</div>
+            <div class="info-row">
+                <span>💰 입장료: 전액 무료 🆓</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d2-3')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d2-3">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d2-3', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d2-4">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 17:30 ~ 18:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d2-4')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌊 함덕 서우봉</div>
+            <div class="desc">에메랄드빛 함덕 바다를 한눈에 내려다볼 수 있는 완만하고 예쁜 산책로입니다. 노을이 물드는 해안선을 따라 가볍게 걷기 좋습니다.</div>
+            <div class="info-row">
+                <span>💡 추천: 편한 운동화 착용</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d2-4')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d2-4">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d2-4', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card food" id="card-d2-5">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 19:00 ~</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d2-5')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 상춘재</div>
+            <div class="desc">청와대 전담 셰프 출신의 사장님이 정성껏 차려내는 곳입니다. 돌문어 비빔밥과 성게 비빔밥 등 속이 편안하고 깔끔한 맛이 일품입니다.</div>
+            <div class="info-row">
+                <span>⚠️ 재료 소진 시 조기 마감 주의</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d2-5')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d2-5">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d2-5', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="day-section" data-day="day6">
-    <div class="day">
-      <h2>🌊 DAY 6</h2>
-      <div class="place">
-        <h3>한담해안산책로</h3>
-        <label><input type="checkbox" class="visit"> 방문 완료</label>
-        <div class="rating" data-index="7">
-          <span class="star" data-value="1">★</span><span class="star" data-value="2">★</span><span class="star" data-value="3">★</span><span class="star" data-value="4">★</span><span class="star" data-value="5">★</span>
+    <!-- ==================== DAY3 ==================== -->
+    <div id="day3" class="day">
+        <div class="highlight">
+            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+            <span>오늘의 하이라이트: 성산 일출봉과 푸른 바다 수국길 🌸</span>
         </div>
-        <textarea class="memo" placeholder="한담 후기"></textarea>
-      </div>
+
+        <div class="card food" id="card-d3-1">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 09:00 ~ 10:00</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d3-1')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 골목식당</div>
+            <div class="desc">제주 구좌읍의 숨은 노포로, 오래 푹 고아내어 국물이 걸쭉하고 구수한 향토 음식 '접짝뼈국'으로 따뜻하게 아침을 시작합니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d3-1')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d3-1">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d3-1', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d3-2">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 10:30 ~ 12:00</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d3-2')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌲 비자림</div>
+            <div class="desc">수백 년 된 비자나무 수천 그루가 자생하는 천년의 숲입니다. 붉은 화산송이가 깔린 평탄한 길을 걸으며 싱그러운 피톤치드를 가득 마십니다.</div>
+            <div class="info-row">
+                <span>💰 입장료 합계: 3,000원 (성인 1인 요금만 납부!)</span>
+                <span>👵 경로(65세 이상) 무료, ♿ 장애우 무료 (신분증 필참)</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d3-2')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d3-2">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d3-2', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d3-3">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 12:10 ~ 13:00</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d3-3')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌸 종달리 수국길</div>
+            <div class="desc">6월 중순이면 푸르고 탐스러운 수국이 해안도로를 따라 끝없이 피어나는 곳입니다. 푸른 바다를 배경으로 예쁜 수국 돌담길을 걷습니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d3-3')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d3-3">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d3-3', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d3-4">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 14:30 ~ 15:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d3-4')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌊 광치기해변</div>
+            <div class="desc">성산일출봉이 한눈에 들어오는 독특한 이끼 낀 화산암 해변입니다. 썰물 때 맞춰가면 물속에 숨겨졌던 비경이 신비롭게 드러납니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d3-4')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d3-4">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d3-4', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card hotel" id="card-d3-5">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 17:00 ~</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d3-5')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🏨 더베스트 제주성산호텔</div>
+            <div class="desc">성산일출봉 인근에 위치하여 동부권 관광지로의 이동이 편리하고 가성비가 훌륭한 깔끔한 숙소입니다.</div>
+            <div class="info-row">
+                <span>✅ 숙소 예약 완료</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d3-5')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d3-5">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d3-5', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>💰 여행 경비</h2>
-    <input id="cost" type="number" placeholder="금액 입력 (원)" style="width:100%; padding:12px; border-radius:12px; border:1px solid #ccc; margin-top:10px;">
-  </div>
+    <!-- ==================== DAY4 ==================== -->
+    <div id="day4" class="day">
+        <div class="highlight">
+            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+            <span>오늘의 하이라이트: 휴애리 화려한 온실 수국축제 🌺</span>
+        </div>
 
-</div>
+        <div class="card food" id="card-d4-1">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 09:30 ~ 10:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d4-1')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 시흥해녀의집</div>
+            <div class="desc">해녀들이 직접 채취한 싱싱한 전복과 조개를 듬뿍 넣고 끓여낸 고소한 원조 조개죽 맛집입니다. 아침 식사로 속을 부드럽게 달래줍니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d4-1')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d4-1">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d4-1', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
 
-<div class="footer">
-  <h2>🌴 6월 제주 여행</h2>
-  <p>체크 · 메모 자동 저장</p>
+        <div class="card spot" id="card-d4-2">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 11:00 ~ 12:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d4-2')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">📜 의귀리 4·3길</div>
+            <div class="desc">한적하고 고즈넉한 서귀포 중산간 마을길입니다. 4·3 사건의 슬픈 역사를 기억하며 조용하고 평화로운 숲길을 따라 발걸음을 옮깁니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d4-2')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d4-2">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d4-2', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d4-3">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 14:20 ~ 15:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d4-3')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌸 휴애리 수국축제</div>
+            <div class="desc">제주 6월 여행의 하이라이트 공원입니다. 정성스럽게 가꾼 풍성한 온실 수국과 오색빛깔 정원을 거닐며 이번 여행의 인생 사진을 남깁니다.</div>
+            <div class="info-row">
+                <span>💰 입장료 합계: 31,000원 (성인 1.3만, 경로 우대 9천, 장애 우대 9천)</span>
+                <span>👵 경로 및 ♿ 장애 복지 혜택 적용 (증빙카드 필수 지참 시 각 9,000원 단체가 적용)</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d4-3')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d4-3">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d4-3', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card hotel" id="card-d4-4">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 17:00 ~</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d4-4')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🏨 호텔 화인 제주</div>
+            <div class="desc">서귀포 천지연폭포와 서귀포항 근처에 위치한 안락한 호텔입니다. 저녁에 주변 시내를 가볍게 둘러보기 좋습니다.</div>
+            <div class="info-row">
+                <span>✅ 숙소 예약 완료</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d4-4')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d4-4">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d4-4', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY5 ==================== -->
+    <div id="day5" class="day">
+        <div class="highlight">
+            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+            <span>오늘의 하이라이트: 신창 풍차해안 드라이브와 수월봉 낙조 🌅</span>
+        </div>
+
+        <div class="card food" id="card-d5-1">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 09:30 ~ 10:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d5-1')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 삼보식당</div>
+            <div class="desc">수요미식회에도 소개된 서귀포 노포입니다. 옥돔구이와 자리물회, 혹은 뜨끈하고 개운한 오리지널 성게미역국이 유명합니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d5-1')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d5-1">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d5-1', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d5-2">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 11:00 ~ 12:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d5-2')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌊 박수기정</div>
+            <div class="desc">안덕면 대평리 포구에 우뚝 솟은 웅장한 수직 절벽입니다. 거대한 병풍 같은 기암괴석을 배경으로 탁 트인 서귀포 바다를 감상하며 산책합니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d5-2')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d5-2">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d5-2', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d5-3">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 12:40 ~ 13:40</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d5-3')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌸 안성리 수국길</div>
+            <div class="desc">제주의 옛 정취가 가득한 전통 돌담길 사이사이로 수국이 피어나는 숨은 도민 명소입니다. 복잡하지 않고 조용하게 수국을 누릴 수 있습니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d5-3')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d5-3">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d5-3', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d5-4">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 15:00 ~ 16:00</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d5-4')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌊 신창풍차해안도로</div>
+            <div class="desc">해상 풍력발전기들이 바다 위에 줄지어 서 있는 이색적인 해안선입니다. 시원한 바닷바람을 맞으며 드라이브와 도보 산책을 동시에 즐깁니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d5-4')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d5-4">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d5-4', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d5-5">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 16:15 ~ 17:00</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d5-5')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌊 수월봉</div>
+            <div class="desc">유네스코 세계지질공원으로 지정된 곳으로, 차를 타고 정상까지 편하게 올라갈 수 있습니다. 깎아지른 듯한 화산재 지층과 차귀도가 보입니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d5-5')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d5-5">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d5-5', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card hotel" id="card-d5-6">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 17:30 ~</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d5-6')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🏨 다인리조트</div>
+            <div class="desc">애월 해안도로변에 위치하여 마지막 날 밤 제주의 밤바다 파도 소리와 야경 정취를 만끽하기 좋은 숙소입니다.</div>
+            <div class="info-row">
+                <span>✅ 숙소 예약 완료</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d5-6')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d5-6">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d5-6', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DAY6 ==================== -->
+    <div id="day6" class="day">
+        <div class="highlight">
+            <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+            <span>오늘의 하이라이트: 한담해변의 아침 힐링산책과 시장 쇼핑 🛍️</span>
+        </div>
+
+        <div class="card spot" id="card-d6-1">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 08:30 ~ 09:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d6-1')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🌊 한담해안산책로</div>
+            <div class="desc">곽지해수욕장까지 이어되는 구불구불한 명품 해안 길입니다. 오전의 맑고 투명한 에메랄드빛 바다 바로 옆을 걸으며 마지막 힐링을 만끽합니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d6-1')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d6-1">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d6-1', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card food" id="card-d6-2">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 09:30 ~ 10:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d6-2')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🍽 곽지국시</div>
+            <div class="desc">애월 주민들이 찾는 아담한 국수 노포입니다. 기름기 없이 깔끔하게 우려낸 고기국수와 시원하고 담백한 멸치국수로 따뜻하게 식사합니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d6-2')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d6-2">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d6-2', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card spot" id="card-d6-3">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 11:30 ~ 12:30</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d6-3')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🛍️ 동문시장 구경 및 쇼핑</div>
+            <div class="desc">제주에서 가장 큰 전통시장입니다. 활기찬 시장 골목을 구경하고, 직장 동료들에게 선물할 상하지 않는 맛있는 '제주 메밀샌드' 과자를 구매합니다.</div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d6-3')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d6-3">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d6-3', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="card ship" id="card-d6-4">
+            <div class="card-header">
+                <div class="time-box"><i class="fa-regular fa-clock"></i> 13:40 ~ 18:10</div>
+                <div class="check-container">
+                    <button class="check-btn" onclick="toggleCheck('card-d6-4')">
+                        <i class="fa-regular fa-circle-check"></i> <span>미방문</span>
+                    </button>
+                </div>
+            </div>
+            <div class="title">🚢 제주항 출발 ➡️ 목포항 (광주 귀환)</div>
+            <div class="desc">차량을 배에 다시 선적하고 제주항을 출발합니다. 목포항에 안전하게 도착한 뒤, 광주 상무지구 본가로 안전하게 복귀하며 여행을 마무리합니다.</div>
+            <div class="info-row">
+                <span>✅ 차량 선적 예약 완료</span>
+                <span>💡 꿀팁: 멀미약 사전 복용 권장</span>
+            </div>
+            <!-- 메모 영역 -->
+            <div class="memo-container">
+                <div class="memo-header" onclick="toggleMemo('card-d6-4')">
+                    <span><i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기</span>
+                    <span class="memo-saved-indicator" id="memo-saved-card-d6-4">자동저장 완료 ✅</span>
+                </div>
+                <div class="memo-body">
+                    <textarea class="memo-textarea" oninput="saveMemo('card-d6-4', this.value)" placeholder="부모님 반응, 필요한 준비물 등 메모를 작성해보세요..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이번 여행 베스트 5 -->
+    <div class="best">
+        <h2>🏆 이번 여행 베스트 5 코스</h2>
+        <ol>
+            <li>🌊 함덕 서우봉 (탁 트인 에메랄드 해변 언덕)</li>
+            <li>🌸 휴애리 수국축제 (6월 꽃 여행의 하이라이트)</li>
+            <li>🌊 광치기해변 (성산일출봉과 이끼 낀 기암괴석)</li>
+            <li>🌊 수월봉 (차 타고 올라가는 기가 막힌 지질 절벽)</li>
+            <li>🌊 한담해안산책로 (투명한 투톤 바다 바로 옆 산책길)</li>
+        </ol>
+    </div>
+
+    <!-- 하단 정보창 -->
+    <div class="footer">
+        👨‍👩‍👦 성인 3명 (부모님 동반 효도여행)<br>
+        🚗 SM3 69로9752 (안전 최우선!)<br>
+        🚢 퀸제누비아 왕복 선적 완료<br>
+        🏨 일자별 최고의 숙소 예약 완료
+        <small>👵 매표소나 혜택 수령을 위해 부모님 신분증 및 장애인 복지카드를 꼭 주머니에 챙겨주세요!</small>
+    </div>
+
+    <!-- 데이터 리셋 버튼 -->
+    <div class="reset-container">
+        <button class="reset-btn" onclick="clearAllData()"><i class="fa-solid fa-rotate-left"></i> 체크 및 메모 전체 초기화</button>
+    </div>
 </div>
 
 <script>
-const checks = document.querySelectorAll(".visit");
-const fill = document.getElementById("progressFill");
-const text = document.getElementById("progressText");
-const costInput = document.getElementById("cost");
+    // 상태 관리 객체 (LocalStorage 자동 저장 대응)
+    let travelState = {
+        checked: {},
+        memos: {}
+    };
 
-// 1. 진행률 및 방문 완료 스타일 제어
-function updateProgress(){
-  const total = checks.length;
-  const done = [...checks].filter(c => c.checked).length;
-  const percent = (done / total) * 100;
-
-  fill.style.width = percent + "%";
-  text.innerHTML = done + " / " + total + " 완료";
-
-  checks.forEach(c => {
-    const placeDiv = c.closest('.place');
-    if (c.checked) {
-      placeDiv.classList.add('done');
-    } else {
-      placeDiv.classList.remove('done');
+    // 페이지 시작 시 작동 함수
+    window.onload = function() {
+        loadData();
+        updateProgressBar();
+        highlightActiveMapPin('day1');
     }
-  });
 
-  localStorage.setItem("jejuChecks", JSON.stringify([...checks].map(c => c.checked)));
-}
+    // 데이터 로드
+    function loadData() {
+        const saved = localStorage.getItem('jeju_june_trip_state');
+        if (saved) {
+            try {
+                travelState = JSON.parse(saved);
+                if (!travelState.checked) travelState.checked = {};
+                if (!travelState.memos) travelState.memos = {};
+            } catch (e) {
+                console.error("데이터 복구 실패, 새로 생성합니다.");
+            }
+        }
 
-// 2. 날짜별 필터링 기능
-function filterDay(day) {
-  // 탭 버튼 활성화 변경
-  const buttons = document.querySelectorAll('.tab-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
+        // 체크 상태 돔 반영
+        Object.keys(travelState.checked).forEach(cardId => {
+            if (travelState.checked[cardId]) {
+                const btn = document.querySelector(`#${cardId} .check-btn`);
+                if (btn) {
+                    btn.classList.add('checked');
+                    btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>방문 완료</span>`;
+                }
+            }
+        });
 
-  // 섹션 보이기/숨기기
-  const sections = document.querySelectorAll('.day-section');
-  sections.forEach(sec => {
-    if (day === 'all' || sec.getAttribute('data-day') === day) {
-      sec.style.display = 'block';
-    } else {
-      sec.style.display = 'none';
+        // 메모 돔 반영
+        Object.keys(travelState.memos).forEach(cardId => {
+            const memoText = travelState.memos[cardId];
+            if (memoText && memoText.trim() !== '') {
+                const textarea = document.querySelector(`#${cardId} .memo-textarea`);
+                if (textarea) {
+                    textarea.value = memoText;
+                    // 작성된 메모가 있을 시 메모창 열어두기 및 가이드 텍스트 변환
+                    const memoHeader = document.querySelector(`#${cardId} .memo-header span`);
+                    if (memoHeader) memoHeader.innerHTML = `<i class="fa-solid fa-comment-dots" style="color: var(--sea-medium)"></i> 작성된 메모 보기`;
+                }
+            }
+        });
     }
-  });
-}
 
-// 3. 별점 관리 기능
-const ratings = document.querySelectorAll('.rating');
-
-function setStars(ratingContainer, value) {
-  const stars = ratingContainer.querySelectorAll('.star');
-  stars.forEach(star => {
-    if (parseInt(star.getAttribute('data-value')) <= value) {
-      star.classList.add('active');
-    } else {
-      star.classList.remove('active');
+    // 로컬스토리지에 상태 보존
+    function saveState() {
+        localStorage.setItem('jeju_june_trip_state', JSON.stringify(travelState));
     }
-  });
-}
 
-ratings.forEach(rating => {
-  const index = rating.getAttribute('data-index');
-  
-  // 로컬스토리지에서 별점 데이터 가져오기
-  const savedRating = localStorage.getItem('rating' + index) || 0;
-  setStars(rating, savedRating);
-
-  // 클릭 이벤트 추가
-  rating.addEventListener('click', (e) => {
-    if(e.target.classList.contains('star')) {
-      const value = e.target.getAttribute('data-value');
-      setStars(rating, value);
-      localStorage.setItem('rating' + index, value);
+    // 탭 열기 (일자 전환)
+    function openDay(evt, dayId){
+        let days = document.getElementsByClassName("day");
+        for(let i=0; i<days.length; i++){
+            days[i].style.display = "none";
+        }
+        
+        let btns = document.getElementsByClassName("tab-btn");
+        for(let i=0; i<btns.length; i++){
+            btns[i].classList.remove("active");
+        }
+        
+        document.getElementById(dayId).style.display = "block";
+        if (evt) {
+            evt.currentTarget.classList.add("active");
+        } else {
+            // 외부 호출(지도 핀 클릭 등) 대응을 위한 탭 활성화 처리
+            const tabIndex = parseInt(dayId.replace('day', '')) - 1;
+            if(btns[tabIndex]) btns[tabIndex].classList.add("active");
+        }
+        
+        // 지도 핀 동적 활성화
+        highlightActiveMapPin(dayId);
+        
+        // 탭 전환 시 상단으로 부드러운 스크롤
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
-  });
-});
 
-// 4. 초기 데이터 로드 및 이벤트 바인딩
-const savedChecks = JSON.parse(localStorage.getItem("jejuChecks"));
-if(savedChecks){
-  checks.forEach((c, i) => {
-    if(savedChecks[i] !== undefined){
-      c.checked = savedChecks[i];
+    // 지도 핀을 클릭했을 때의 제어 함수
+    function selectDay(dayId) {
+        openDay(null, dayId);
+        // 모바일 배려: 탭바 영역이 보이도록 살짝 조절
+        const tabsElement = document.getElementById('day-tabs');
+        if (tabsElement) {
+            tabsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
-  });
-}
 
-checks.forEach(c => {
-  c.addEventListener("change", updateProgress);
-});
+    // 지도 활성화 핀 비주얼 강화
+    function highlightActiveMapPin(dayId) {
+        // 모든 핀 초기화
+        const pins = document.querySelectorAll('.map-pin');
+        pins.forEach(pin => pin.classList.remove('active'));
 
-updateProgress();
+        // 해당 일자 핀 하이라이트 활성화
+        const activePin = document.getElementById('pin-' + dayId);
+        if (activePin) {
+            activePin.classList.add('active');
+        }
+    }
 
-// 메모 저장
-document.querySelectorAll(".memo").forEach((memo, index) => {
-  memo.value = localStorage.getItem("memo" + index) || "";
-  memo.addEventListener("input", () => {
-    localStorage.setItem("memo" + index, memo.value);
-  });
-});
+    // ✅ 방문 체크 토글 제어
+    function toggleCheck(cardId) {
+        const btn = document.querySelector(`#${cardId} .check-btn`);
+        if (!btn) return;
 
-// 경비 저장
-costInput.value = localStorage.getItem("jejuCost") || "";
-costInput.addEventListener("input", () => {
-  localStorage.setItem("jejuCost", costInput.value);
-});
+        const isChecked = btn.classList.contains('checked');
+        if (isChecked) {
+            btn.classList.remove('checked');
+            btn.innerHTML = `<i class="fa-regular fa-circle-check"></i> <span>미방문</span>`;
+            travelState.checked[cardId] = false;
+        } else {
+            btn.classList.add('checked');
+            btn.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>방문 완료</span>`;
+            travelState.checked[cardId] = true;
+        }
+
+        saveState();
+        updateProgressBar();
+    }
+
+    // 📊 진행률 계산 및 애니메이션 바 업데이트
+    function updateProgressBar() {
+        const totalCards = document.querySelectorAll('.card').length;
+        const checkedCount = Object.values(travelState.checked).filter(Boolean).length;
+        
+        const percent = totalCards > 0 ? Math.round((checkedCount / totalCards) * 100) : 0;
+        
+        // 엘리먼트 제어
+        const barFill = document.getElementById('progress-bar');
+        const percentText = document.getElementById('progress-percent');
+        const statusText = document.getElementById('progress-status');
+
+        if (barFill && percentText) {
+            barFill.style.width = percent + '%';
+            percentText.innerText = percent + '%';
+        }
+
+        // 진행률 맞춤 상태 가이드 메시지 작성
+        if (statusText) {
+            if (percent === 0) {
+                statusText.innerText = "설레는 제주 여행이 곧 시작됩니다! ✈️";
+            } else if (percent < 30) {
+                statusText.innerText = "안전하게 첫걸음을 떼었습니다. 아름다운 제주 바다를 즐겨보세요! 🌊";
+            } else if (percent < 60) {
+                statusText.innerText = "여정의 절반 가까이 다다랐습니다. 부모님의 예쁜 모습을 사진으로 남겨보세요! 📸";
+            } else if (percent < 90) {
+                statusText.innerText = "다채로운 추억들이 가득 쌓이고 있습니다. 끝까지 편안하고 여유로운 산책 되세요! 🚶";
+            } else if (percent < 100) {
+                statusText.innerText = "마지막 일정 완료 직전! 완벽하고 편안한 효도 여행이 완성되어 갑니다! 💎";
+            } else {
+                statusText.innerText = "축하합니다! 우리 가족의 소중하고 행복한 제주 여정이 모두 완료되었습니다! 수고하셨습니다 🏅";
+            }
+        }
+    }
+
+    // 📝 장소별 메모창 아코디언 토글 제어
+    function toggleMemo(cardId) {
+        const memoBody = document.querySelector(`#${cardId} .memo-body`);
+        if (memoBody) {
+            memoBody.classList.toggle('open');
+        }
+    }
+
+    // 💾 실시간 자동저장 및 타자 인지 
+    let debounceTimer;
+    function saveMemo(cardId, value) {
+        clearTimeout(debounceTimer);
+        
+        // 부모님 타자 입력을 고려해 0.4초간 대기 후 로컬스토리지 자동저장
+        debounceTimer = setTimeout(() => {
+            travelState.memos[cardId] = value;
+            saveState();
+
+            // 상단 저장 완료 알림 비주얼라이징
+            const indicator = document.getElementById('memo-saved-' + cardId);
+            if (indicator) {
+                indicator.classList.add('show');
+                setTimeout(() => {
+                    indicator.classList.remove('show');
+                }, 1500);
+            }
+
+            // 헤더 가이드 텍스트 변환
+            const memoHeader = document.querySelector(`#${cardId} .memo-header span`);
+            if (memoHeader) {
+                if (value.trim() !== '') {
+                    memoHeader.innerHTML = `<i class="fa-solid fa-comment-dots" style="color: var(--sea-medium)"></i> 작성된 메모 보기`;
+                } else {
+                    memoHeader.innerHTML = `<i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기`;
+                }
+            }
+        }, 400);
+    }
+
+    // 데이터 완전 리셋 제어
+    function clearAllData() {
+        const resetConfirm = document.createElement('div');
+        if (confirm("방문 체크 상태와 작성하신 모든 메모를 초기화하시겠습니까? 복구할 수 없습니다.")) {
+            localStorage.removeItem('jeju_june_trip_state');
+            travelState = { checked: {}, memos: {} };
+            
+            // 돔 상태 강제 복구
+            document.querySelectorAll('.check-btn').forEach(btn => {
+                btn.classList.remove('checked');
+                btn.innerHTML = `<i class="fa-regular fa-circle-check"></i> <span>미방문</span>`;
+            });
+
+            document.querySelectorAll('.memo-textarea').forEach(textarea => {
+                textarea.value = '';
+            });
+
+            document.querySelectorAll('.memo-header span').forEach(span => {
+                span.innerHTML = `<i class="fa-regular fa-comment-dots"></i> 한줄 메모 적기`;
+            });
+
+            updateProgressBar();
+        }
+    }
 </script>
 
 </body>
